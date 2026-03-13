@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Withdrawal - Select Bank</title>
+
+<style>
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 20px;
+background: #fff;
+color: #111;
+}
+
+header {
+display: flex;
+justify-content: space-around;
+margin-bottom: 20px;
+}
+
+header a {
+text-decoration: none;
+padding: 12px 18px;
+border-radius: 22px;
+color: #111;
+font-weight: 600;
+transition: 0.2s;
+}
+
+header a.active {
+background: #0b274d;
+color: #fff;
+}
+
+.bank-list {
+margin-top: 30px;
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+gap: 15px;
+}
+
+.bank-item {
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 12px;
+border: 1px solid #ddd;
+border-radius: 10px;
+cursor: pointer;
+transition: 0.2s;
+background: #fafafa;
+}
+
+.bank-item:hover {
+background: #f0f4fa;
+}
+
+.bank-item img {
+width: 40px;
+height: 40px;
+object-fit: contain;
+border-radius: 5px;
+background: #fff;
+}
+
+.bank-item span {
+font-size: 15px;
+font-weight: 500;
+color: #0b274d;
+}
+
+.overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(11,39,77,0.6);
+display: none;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+z-index: 9999;
+}
+
+.spinner {
+width: 50px;
+height: 50px;
+border: 4px solid rgba(255,255,255,0.3);
+border-top: 4px solid orange;
+border-radius: 50%;
+animation: spin 1s linear infinite;
+margin-bottom: 15px;
+}
+
+.loading-text {
+font-size: 16px;
+color: #fff;
+}
+
+@keyframes spin {
+0% {transform: rotate(0deg);}
+100% {transform: rotate(360deg);}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<a href="accounts.html">Accounts</a>
+<a href="withdraw.html" class="active">Withdrawal</a>
+<a href="#" onclick="showLoadingAndRedirect('plan.html')">Planning</a>
+</header>
+
+<h2 style="text-align:center; color:#0b274d;">Select Your Bank or Payment Method</h2>
+
+<div class="bank-list">
+
+<div class="bank-item" onclick="showLoadingAndRedirect('amount.html')">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Chase_logo.svg">
+<span>Chase Bank</span>
+</div>
+
+<div class="bank-item" onclick="showLoadingAndRedirect('amount.html')">
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Bank_of_America_logo.svg">
+<span>Bank of America</span>
+</div>
+
+<div class="bank-item" onclick="showLoadingAndRedirect('amount.html')">
+<img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Wells_Fargo_Bank.svg">
+<span>Wells Fargo</span>
+</div>
+
+<div class="bank-item" onclick="showLoadingAndRedirect('amount.html')">
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/USAA_logo.svg">
+<span>USAA</span>
+</div>
+
+<div class="bank-item" onclick="showLoadingAndRedirect('amount.html')">
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Citi.svg">
+<span>Citi Bank</span>
+</div>
+
+<div class="bank-item" onclick="showLoadingAndRedirect('amount.html')">
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/PNC_Bank_logo.svg">
+<span>PNC Bank</span>
+</div>
+
+<div class="bank-item" onclick="showLoadingAndRedirect('amount.html')">
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Capital_One_logo.svg">
+<span>Capital One</span>
+</div>
+
+<div class="bank-item" onclick="showLoadingAndRedirect('amount.html')">
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Truist_Financial_logo.svg">
+<span>Truist</span>
+</div>
+
+<div class="bank-item" onclick="showLoadingAndRedirect('amount.html')">
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Ally_Financial_logo.svg">
+<span>Ally Bank</span>
+</div>
+
+<div class="bank-item" onclick="showLoadingAndRedirect('amount.html')">
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Regions_Financial_Corporation_logo.svg">
+<span>Regions Bank</span>
+</div>
+
+<div class="bank-item" onclick="showLoadingAndRedirect('amount.html')">
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/TD_Bank_logo.svg">
+<span>TD Bank</span>
+</div>
+
+<div class="bank-item" onclick="showLoadingAndRedirect('amount.html')">
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Citizens_Bank_logo.svg">
+<span>Citizens Bank</span>
+</div>
+
+<div class="bank-item" onclick="showLoadingAndRedirect('amount.html')">
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/KeyBank_logo.svg">
+<span>KeyBank</span>
+</div>
+
+<div class="bank-item" onclick="showLoadingAndRedirect('amount.html')">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Fifth_Third_Bank_logo.svg">
+<span>Fifth Third Bank</span>
+</div>
+
+<div class="bank-item" onclick="showLoadingAndRedirect('amount.html')">
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Navy_Federal_Credit_Union_logo.svg">
+<span>Navy Federal Credit Union</span>
+</div>
+
+<!-- PayPal (unchanged) -->
+<div class="bank-item" onclick="showLoadingAndRedirect('amount.html')">
+<img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg">
+<span>PayPal</span>
+</div>
+
+<div class="bank-item" onclick="showLoadingAndRedirect('amount.html')">
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/58/Venmo_2014_logo.png">
+<span>Venmo</span>
+</div>
+
+<!-- Apple Pay (unchanged) -->
+<div class="bank-item" onclick="showLoadingAndRedirect('apple.html')">
+<img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg">
+<span>Apple Pay</span>
+</div>
+
+<div class="bank-item" onclick="showLoadingAndRedirect('amount.html')">
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Square_Cash_app_logo.svg">
+<span>Cash App</span>
+</div>
+
+</div>
+
+<div class="overlay" id="loadingOverlay">
+<div class="spinner"></div>
+<div class="loading-text">Loading...</div>
+</div>
+
+<script>
+function showLoadingAndRedirect(url){
+const overlay=document.getElementById("loadingOverlay");
+overlay.style.display="flex";
+setTimeout(()=>{
+overlay.style.display="none";
+window.location.href=url;
+},2000);
+}
+
+window.addEventListener("pageshow",function(){
+document.getElementById("loadingOverlay").style.display="none";
+});
+</script>
+
+</body>
+</html>
